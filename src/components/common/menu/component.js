@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Menu as MenuWilco } from '@inseefr/wilco';
+import { CREATE } from 'api/paths';
 
-const Menu = () => (
-  <>
-    <Link to="/">Home</Link>
-    <Link to="/create">Create</Link>
-  </>
-);
+const paths = [{ label: 'Create', path: `${CREATE}` }];
+
+const Menu = () => <MenuWilco paths={paths} text="Home" />;
 
 export default Menu;

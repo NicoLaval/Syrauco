@@ -1,6 +1,7 @@
 import React from 'react';
 import './title.scss';
+import { PageTitle } from '@inseefr/wilco';
 
-const Title = ({ title = '' }) => <h1 className="title">{title}</h1>;
+const Title = ({ title = '' }) => <PageTitle title={title} />;
 
 export default Title;

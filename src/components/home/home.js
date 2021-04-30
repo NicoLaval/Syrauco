@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Title, Loading, Error } from 'components/common';
-import { Link } from 'react-router-dom';
+import { Title, Loading, Error, List } from 'components/common';
 import { getTodos } from 'api/calls';
 
 const Home = () => {
@@ -16,16 +15,12 @@ const Home = () => {
 
   if (error) return <Error error={error} />;
 
+  const items = list.map(({ title: label, id }) => ({ label, id }));
+
   return (
     <>
-      <Title title="Home" />
-      <ul>
-        {list.map((v) => (
-          <li key={v.id}>
-            <Link to={`/visu/${v.id}`}>{v.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <Title title="Syrauco" />
+      <List items={items} childPath={`visu`} />
     </>
   );
 };

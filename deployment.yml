@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syrauco
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: syrauco
+  template:
+    metadata:
+      labels:
+        app: syrauco
+    spec:
+      containers:
+        - name: syrauco
+          image: ddecrulle/syrauco
+          imagePullPolicy: Always

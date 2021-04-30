@@ -11,12 +11,10 @@ const get = (url, { setResult, setLoading, setError }) =>
       setLoading(false);
     })
     .catch((e) => {
-      setError(e);
+      setError(`${e}`);
       setLoading(false);
     });
 
-export const getTodos = ({ setResult, setLoading, setError }) =>
-  get(`${TODOS}`, { setResult, setLoading, setError });
+export const getTodos = (setters) => get(`${TODOS}`, setters);
 
-export const getTodo = (id, { setResult, setLoading, setError }) =>
-  get(`${TODO}/${id}`, { setResult, setLoading, setError });
+export const getTodo = (id, setters) => get(`${TODO}/${id}`, setters);

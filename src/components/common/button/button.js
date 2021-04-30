@@ -1,9 +1,8 @@
 import React from 'react';
+import { Button as ButtonWilco } from '@inseefr/wilco';
 
 const Button = ({ onClick, text }) => (
-  <button type="button" onClick={onClick}>
-    {text}
-  </button>
+  <ButtonWilco label={text} action={onClick} />
 );
 
 export default Button;
