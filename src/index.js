@@ -1,28 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from 'components/home';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Menu } from 'components/common';
-import Visu from 'components/visualization';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import Root from 'components/root';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Menu />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/visu/:id">
-          <Visu />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
+      <Root />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,14 +1,31 @@
-import React from 'react';
-import { Title } from 'components/common';
-import { versions } from 'mock/versions';
+import React, { useState, useEffect } from 'react';
+import { Title, Content, Loading, Error } from 'components/common';
 import { useParams } from 'react-router-dom';
+import { getTodo } from 'api/calls';
 
 const Visualization = () => {
   const { id } = useParams();
-  const label = versions.find((v) => id === v.id)?.label || 'pas trouvé';
-  return <Title title={`Visualization : ${label}`} />;
-};
 
-// TODO add version label
+  const [version, setVersion] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    getTodo(id, { setResult: setVersion, setLoading, setError });
+  }, [id]);
+
+  if (loading) return <Loading />;
+
+  if (error) return <Error error={error} />;
+
+  const { title, ...content } = version;
+
+  return (
+    <>
+      <Title title={title} />
+      <Content content={content} />
+    </>
+  );
+};
 
 export default Visualization;
