@@ -11,7 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Menu />
-      <Root />
+      <div className="container">
+        <Root />
+      </div>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

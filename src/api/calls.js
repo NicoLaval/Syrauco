@@ -1,4 +1,4 @@
-import { TODOS, TODO } from './paths';
+import { TODOS, TODO, POST_VERSION } from './paths';
 
 const get = (url, { setResult, setLoading, setError }) =>
   fetch(url)
@@ -18,3 +18,14 @@ const get = (url, { setResult, setLoading, setError }) =>
 export const getTodos = (setters) => get(`${TODOS}`, setters);
 
 export const getTodo = (id, setters) => get(`${TODO}/${id}`, setters);
+
+const post = (url, body) =>
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+export const postVersion = (body) => post(POST_VERSION, body);
